@@ -83,7 +83,7 @@ meter {
 /* revert for bug in Chromium browsers
    - fix for the content editable attribute will work properly.
    - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element*/
-:where([contenteditable]:not([contenteditable="false"])) {
+:where([contenteditable]:not([contenteditable='false'])) {
   -moz-user-modify: read-write;
   -webkit-user-modify: read-write;
   overflow-wrap: break-word;
@@ -92,7 +92,7 @@ meter {
 }
 
 /* apply back the draggable feature - exist only in Chromium and Safari */
-:where([draggable="true"]) {
+:where([draggable='true']) {
   -webkit-user-drag: element;
 }
 
@@ -107,8 +107,8 @@ html {
 
 /* Resetting root parameters */
 :root {
-  font-family: "Rubik";
-  font-size: 18px;
+  font-family: 'Rubik';
+  font-size: 22px;
 
   /* Content wrapper width */
   --desktop-wrapper-width: 80%;
@@ -122,7 +122,7 @@ html {
   --base-section-header-padding: 40px 0;
   --base-cta-wrapper-padding: 40px 0 20px 0;
   --service-side-padding: 0 40px;
-  --headline-text-padding: 40px 40px;
+  --headline-text-padding: 20px 20px;
   --cta-button-padding: 20px 40px;
 
   /* Font sizes */
@@ -168,7 +168,11 @@ p {
 }
 
 body {
-  background-color: bisque;
+  background-image: url(./image/BG.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-color: bisque; */
 }
 
 .wrapper {
@@ -177,6 +181,10 @@ body {
 
   align-items: center;
   justify-content: center;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.5);
 
   direction: rtl;
 }
@@ -236,15 +244,21 @@ main {
   flex-direction: column;
 
   align-items: flex-start;
-  justify-content: flex-end;
+  justify-content: center;
 
-  background-image: url(image/hero-image-rtl.jpg);
-  background-size: cover;
+  background-image: url(./image/hero-image-rtl.png);
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
 
   width: 100%;
   height: 60vh;
 
   position: relative;
+}
+
+.cover-headline {
+  padding: var(--headline-text-padding);
 }
 
 .language_selector {
@@ -311,12 +325,6 @@ main {
 
 #checkmark-icon {
   width: 32px;
-}
-
-.cover-headline {
-  padding: var(--headline-text-padding);
-
-  position: relative;
 }
 
 .cta-wrapper {
@@ -513,7 +521,6 @@ footer {
     font-size: 14px;
     --base-header-footer-padding: 10px 20px;
     --base-section-header-padding: 20px 20px;
-    --headline-text-padding: 20px 20px;
   }
 
   .header-wrapper {
@@ -532,6 +539,8 @@ footer {
 @media screen and (max-width: 768px) {
   :root {
     --cta-button-padding: 20px 20px;
+
+    --cover-headline: 2rem;
   }
 
   .header-wrapper {
@@ -547,6 +556,9 @@ footer {
   }
 
   .cover {
+    align-items: flex-start;
+    justify-content: flex-start;
+
     height: 40vh;
   }
 
